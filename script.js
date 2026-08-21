@@ -2,99 +2,86 @@ const members = [
   {
     name: "王少楠",
     role: "Assistant Professor",
-    group: "faculty",
     image: "assets/members/shaonan-wang.jpg",
     profile: "https://wangshaonan.github.io/",
+    research: "Research interests forthcoming",
   },
   {
     name: "张霁雯",
     role: "Student",
-    group: "student",
     image: "assets/members/jiwen-zhang.jpg",
     profile: "https://wendie0219.github.io/",
+    research: "Research interests forthcoming",
   },
   {
     name: "Yang Fan",
     role: "Student",
-    group: "student",
     image: "assets/members/yang-fan.png",
     profile: "https://yvofun.github.io/",
+    research: "Research interests forthcoming",
   },
   {
     name: "江城子",
     role: "Student",
-    group: "student",
     image: "assets/members/chengzi-jiang.jpg",
     profile: null,
+    research: "Research interests forthcoming",
   },
   {
     name: "宽以待己",
     role: "Student",
-    group: "student",
     image: "assets/members/kuan-yi-daiji.jpg",
     profile: null,
+    research: "Research interests forthcoming",
   },
   {
     name: "Song Qingyi",
     role: "Student",
-    group: "student",
     image: "assets/members/qingyi-song.jpg",
     profile: "https://sqy1225.github.io/",
+    research: "Research interests forthcoming",
+  },
+  {
+    name: "刘冠廷",
+    role: "Student",
+    image: "assets/members/guanting-liu.png",
+    profile: "https://quentin2026.github.io/",
+    research: "Research interests forthcoming",
   },
 ];
 
-const facultyGrid = document.querySelector("#faculty-grid");
-const studentGrid = document.querySelector("#student-grid");
+const currentGrid = document.querySelector("#current-grid");
 
-const renderMembers = (group, container) => {
-  if (!container) return;
-
-  container.innerHTML = members
-    .filter((member) => member.group === group)
+if (currentGrid) {
+  currentGrid.innerHTML = members
     .map(
       (member, index) => `
-        <article class="member-card reveal" style="transition-delay: ${Math.min(index * 60, 180)}ms">
-          <div class="member-image">
-            <img
-              src="${member.image}"
-              alt="Portrait of ${member.name}"
-              loading="lazy"
-              decoding="async"
-            />
+        <article class="person-card reveal" style="transition-delay: ${Math.min(index * 50, 150)}ms">
+          <div class="person-portrait">
+            <img src="${member.image}" alt="Portrait of ${member.name}" loading="lazy" decoding="async" />
           </div>
-          <div class="member-info">
-            <div>
-              <h3>${
-                member.profile
-                  ? `<a href="${member.profile}" target="_blank" rel="noopener noreferrer">${member.name}</a>`
-                  : member.name
-              }</h3>
-              <p>${member.role}</p>
+          <div class="person-body">
+            <h3>${
+              member.profile
+                ? `<a href="${member.profile}" target="_blank" rel="noopener noreferrer">${member.name}</a>`
+                : member.name
+            }</h3>
+            <p class="person-role">${member.role}</p>
+            <div class="person-research">
+              <span>Research interests</span>
+              <p>${member.research}</p>
             </div>
             ${
               member.profile
-                ? `<a class="profile-link" href="${member.profile}" target="_blank" rel="noopener noreferrer" aria-label="Visit ${member.name}'s personal homepage">↗</a>`
-                : `<span class="profile-status">Profile<br />forthcoming</span>`
+                ? `<a class="person-profile" href="${member.profile}" target="_blank" rel="noopener noreferrer">Personal homepage <span aria-hidden="true">↗</span></a>`
+                : `<span class="person-profile person-profile-muted">Homepage forthcoming</span>`
             }
           </div>
         </article>
       `,
     )
     .join("");
-};
-
-renderMembers("faculty", facultyGrid);
-renderMembers("student", studentGrid);
-
-const updateGroupCount = (group, target) => {
-  const count = document.querySelector(target);
-  if (count) {
-    count.textContent = String(members.filter((member) => member.group === group).length).padStart(2, "0");
-  }
-};
-
-updateGroupCount("faculty", "#faculty-count");
-updateGroupCount("student", "#student-count");
+}
 
 const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector(".menu-toggle");
@@ -122,11 +109,43 @@ document.addEventListener("keydown", (event) => {
 
 navigation?.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
 
-window.addEventListener(
-  "scroll",
-  () => header?.classList.toggle("scrolled", window.scrollY > 24),
-  { passive: true },
-);
+const pageMain = document.querySelector("main");
+const pageFooter = document.querySelector(".site-footer");
+
+if (pageMain && !pageMain.dataset.navTheme) pageMain.dataset.navTheme = "light";
+if (pageFooter && !pageFooter.dataset.navTheme) pageFooter.dataset.navTheme = "dark";
+
+const themedSections = [...document.querySelectorAll("[data-nav-theme]")];
+let headerUpdateQueued = false;
+
+const updateHeader = () => {
+  if (!header) return;
+
+  header.classList.toggle("scrolled", window.scrollY > 20);
+
+  const sampleY = Math.max(1, header.offsetHeight / 2);
+  let theme = "light";
+
+  themedSections.forEach((section) => {
+    const bounds = section.getBoundingClientRect();
+    if (bounds.top <= sampleY && bounds.bottom > sampleY) {
+      theme = section.dataset.navTheme || "light";
+    }
+  });
+
+  header.dataset.theme = theme;
+  headerUpdateQueued = false;
+};
+
+const queueHeaderUpdate = () => {
+  if (headerUpdateQueued) return;
+  headerUpdateQueued = true;
+  window.requestAnimationFrame(updateHeader);
+};
+
+window.addEventListener("scroll", queueHeaderUpdate, { passive: true });
+window.addEventListener("resize", queueHeaderUpdate);
+updateHeader();
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 const revealItems = document.querySelectorAll(".reveal");
@@ -143,7 +162,7 @@ if (reduceMotion || !("IntersectionObserver" in window)) {
         }
       });
     },
-    { threshold: 0.1, rootMargin: "0px 0px -40px" },
+    { threshold: 0.08, rootMargin: "0px 0px -30px" },
   );
   revealItems.forEach((item) => observer.observe(item));
 }

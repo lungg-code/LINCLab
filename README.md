@@ -4,7 +4,17 @@ The official website for **LINC Lab — Language, Intelligence, Neuroscience & C
 
 > Closing the loop between human language processing and machine intelligence.
 
-This is a lightweight static website built with HTML, CSS, and JavaScript. It has no framework, dependency, or build step and is ready for GitHub Pages.
+This is a lightweight multi-page website built with HTML, CSS, and JavaScript. It has no framework, dependency, or build step and is ready for GitHub Pages.
+
+## Pages
+
+- `index.html` — lab introduction, About, News, and Join Us
+- `people.html` — current members and alumni
+- `publications.html` — publications
+- `teaching.html` — teaching
+- `resources.html` — resources
+- `gallery.html` — gallery
+- `handbook.html` — lab handbook
 
 ## Preview locally
 
@@ -16,7 +26,7 @@ Open `index.html` directly in a browser, or serve the repository with any static
 2. Open `script.js`.
 3. Add or edit one object in the `members` array at the top of the file.
 
-Each member supports `name`, `role`, `group`, `image`, and `profile`. Use `faculty` or `student` for the group, and `null` when a profile is not yet available.
+Each member supports `name`, `role`, `image`, `profile`, and `research`. Use `null` when a profile is not yet available. Replace the research placeholder when a member's research interests are ready.
 
 ## Publish on GitHub Pages
 
