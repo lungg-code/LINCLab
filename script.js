@@ -1,52 +1,85 @@
 const members = [
   {
-    name: "王少楠",
+    name: "Shaonan Wang",
+    chineseName: "王少楠",
     role: "Assistant Professor",
     image: "assets/members/shaonan-wang.jpg",
     profile: "https://wangshaonan.github.io/",
-    research: "Research interests forthcoming",
+    research: "Forthcoming",
   },
   {
-    name: "张霁雯",
-    role: "Student",
-    image: "assets/members/jiwen-zhang.jpg",
-    profile: "https://wendie0219.github.io/",
-    research: "Research interests forthcoming",
+    name: "Chuhan Lang",
+    chineseName: "郎楚涵",
+    role: "PhD Student",
+    start: "Starting September 2026",
+    image: "assets/members/chuhan-lang.jpg",
+    imagePosition: "50% 64%",
+    profile: null,
+    research: "Forthcoming",
   },
   {
-    name: "Yang Fan",
-    role: "Student",
+    name: "Fan Yang",
+    chineseName: "杨帆",
+    role: "PhD Student",
+    start: "Starting September 2026",
     image: "assets/members/yang-fan.png",
     profile: "https://yvofun.github.io/",
-    research: "Research interests forthcoming",
+    research: "Forthcoming",
   },
   {
-    name: "江城子",
-    role: "Student",
-    image: "assets/members/chengzi-jiang.jpg",
+    name: "Na Li",
+    chineseName: "李娜",
+    role: "PhD Student",
+    start: "Starting September 2026",
+    image: null,
     profile: null,
-    research: "Research interests forthcoming",
+    research: "Forthcoming",
   },
   {
-    name: "宽以待己",
-    role: "Student",
-    image: "assets/members/kuan-yi-daiji.jpg",
-    profile: null,
-    research: "Research interests forthcoming",
-  },
-  {
-    name: "Song Qingyi",
-    role: "Student",
+    name: "Qingyi Song",
+    chineseName: "宋庆一",
+    role: "PhD Student",
+    start: "Starting September 2026",
     image: "assets/members/qingyi-song.jpg",
     profile: "https://sqy1225.github.io/",
-    research: "Research interests forthcoming",
+    research: "Forthcoming",
   },
   {
-    name: "刘冠廷",
-    role: "Student",
+    name: "Guangting Liu",
+    chineseName: "刘冠廷",
+    role: "PhD Student",
+    start: "Starting September 2026",
     image: "assets/members/guanting-liu.png",
     profile: "https://quentin2026.github.io/",
-    research: "Research interests forthcoming",
+    supervision: {
+      name: "Prof. Chaoming Wang",
+      url: "https://wangchaoming.com/en/",
+    },
+    research: "Forthcoming",
+  },
+  {
+    name: "Jiwen Zhang",
+    chineseName: "张霁雯",
+    role: "Visiting Student",
+    image: "assets/members/jiwen-zhang.jpg",
+    profile: "https://wendie0219.github.io/",
+    research: "Forthcoming",
+  },
+  {
+    name: "Beiqing Huang",
+    chineseName: "黄倍清",
+    role: "Incoming Research Assistant",
+    image: "assets/members/beiqing-huang.jpg",
+    profile: null,
+    research: "Forthcoming",
+  },
+  {
+    name: "Fei Chen",
+    chineseName: "陈飞",
+    role: "Incoming Research Assistant",
+    image: null,
+    profile: null,
+    research: "Forthcoming",
   },
 ];
 
@@ -57,16 +90,29 @@ if (currentGrid) {
     .map(
       (member, index) => `
         <article class="person-card reveal" style="transition-delay: ${Math.min(index * 50, 150)}ms">
-          <div class="person-portrait">
-            <img src="${member.image}" alt="Portrait of ${member.name}" loading="lazy" decoding="async" />
-          </div>
+          ${
+            member.image
+              ? `<div class="person-portrait">
+                  <img src="${member.image}" alt="Portrait of ${member.name} (${member.chineseName})" loading="lazy" decoding="async"${member.imagePosition ? ` style="object-position: ${member.imagePosition}"` : ""} />
+                </div>`
+              : `<div class="person-portrait person-portrait-empty" aria-label="Portrait forthcoming"></div>`
+          }
           <div class="person-body">
-            <h3>${
-              member.profile
-                ? `<a href="${member.profile}" target="_blank" rel="noopener noreferrer">${member.name}</a>`
-                : member.name
-            }</h3>
+            <div class="person-name">
+              <h3>${
+                member.profile
+                  ? `<a href="${member.profile}" target="_blank" rel="noopener noreferrer">${member.name}</a>`
+                  : member.name
+              }</h3>
+              <p class="person-name-zh">${member.chineseName}</p>
+            </div>
             <p class="person-role">${member.role}</p>
+            ${member.start ? `<p class="person-start">${member.start}</p>` : ""}
+            ${
+              member.supervision
+                ? `<p class="person-supervision">Co-supervised with <a href="${member.supervision.url}" target="_blank" rel="noopener noreferrer">${member.supervision.name} <span aria-hidden="true">↗</span></a></p>`
+                : ""
+            }
             <div class="person-research">
               <span>Research interests</span>
               <p>${member.research}</p>
