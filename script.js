@@ -144,7 +144,10 @@ const queueHeaderUpdate = () => {
 };
 
 window.addEventListener("scroll", queueHeaderUpdate, { passive: true });
-window.addEventListener("resize", queueHeaderUpdate);
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 1120) closeMenu();
+  queueHeaderUpdate();
+});
 updateHeader();
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

@@ -13,7 +13,6 @@ This is a lightweight multi-page website built with HTML, CSS, and JavaScript. I
 - `publications.html` — publications
 - `teaching.html` — teaching
 - `resources.html` — resources
-- `gallery.html` — gallery
 - `handbook.html` — lab handbook
 
 ## Preview locally
