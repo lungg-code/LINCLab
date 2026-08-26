@@ -40,6 +40,10 @@
 
     <main id="main" data-nav-theme="light">
       <section id="home" class="hero section-shell" aria-labelledby="hero-title">
+        <div class="hero-neural-bg" aria-hidden="true">
+          <img src="assets/neural-brain-hero-v2.png" alt="" />
+          <span class="hero-neural-wave"></span>
+        </div>
         <div class="hero-copy reveal">
           <p class="eyebrow">Language, Intelligence, Neuroscience &amp; Cognition</p>
           <h1 id="hero-title" class="hero-statement">
@@ -50,10 +54,10 @@
         <div class="loop-visual reveal" aria-label="Language, brain, and machine intelligence connected in a continuous loop">
           <div class="loop-orbit loop-orbit-a"></div>
           <div class="loop-orbit loop-orbit-b"></div>
-          <div class="loop-core"><strong>Intelligence</strong></div>
-          <p class="loop-label loop-language">Language</p>
-          <p class="loop-label loop-brain">Brain</p>
-          <p class="loop-label loop-machine">Machine</p>
+          <button class="loop-core" type="button" data-loop-focus="intelligence" aria-pressed="false"><strong>Intelligence</strong></button>
+          <button class="loop-label loop-language" type="button" data-loop-focus="language" aria-pressed="false">Language</button>
+          <button class="loop-label loop-brain" type="button" data-loop-focus="brain" aria-pressed="false">Brain</button>
+          <button class="loop-label loop-machine" type="button" data-loop-focus="machine" aria-pressed="false">Machine</button>
         </div>
       </section>
 

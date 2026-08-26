@@ -14,7 +14,7 @@ const members = [
     start: "Starting September 2026",
     image: "assets/members/chuhan-lang.jpg",
     imagePosition: "50% 64%",
-    profile: null,
+    profile: "https://yesod-box.github.io/",
     research: "Forthcoming",
   },
   {
@@ -33,7 +33,7 @@ const members = [
     start: "Starting September 2026",
     image: "assets/members/na-li.jpg",
     imagePosition: "30% 56%",
-    profile: null,
+    profile: "https://lnxxx0712.github.io/",
     research: "Forthcoming",
   },
   {
@@ -200,6 +200,92 @@ window.addEventListener("resize", () => {
 updateHeader();
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const loopVisual = document.querySelector(".loop-visual");
+
+if (loopVisual) {
+  const hero = loopVisual.closest(".hero");
+  const loopControls = [...loopVisual.querySelectorAll("[data-loop-focus]")];
+  let pinnedLoopFocus = null;
+
+  const setRightHover = (isActive) => {
+    if (!hero) return;
+    if (isActive) hero.dataset.rightHover = "true";
+    else delete hero.dataset.rightHover;
+  };
+
+  const resetRightInteraction = () => {
+    setRightHover(false);
+    hero?.style.setProperty("--loop-shift-x", "0px");
+    hero?.style.setProperty("--loop-shift-y", "0px");
+  };
+
+  const showLoopFocus = (focusName) => {
+    if (focusName) {
+      loopVisual.dataset.active = focusName;
+      if (hero) hero.dataset.loopActive = focusName;
+    } else {
+      delete loopVisual.dataset.active;
+      if (hero) delete hero.dataset.loopActive;
+    }
+  };
+
+  const syncPressedState = () => {
+    loopControls.forEach((control) => {
+      control.setAttribute("aria-pressed", String(control.dataset.loopFocus === pinnedLoopFocus));
+    });
+  };
+
+  loopControls.forEach((control) => {
+    const focusName = control.dataset.loopFocus;
+
+    control.addEventListener("mouseenter", () => showLoopFocus(focusName));
+    control.addEventListener("mouseleave", () => showLoopFocus(pinnedLoopFocus));
+    control.addEventListener("focus", () => showLoopFocus(focusName));
+    control.addEventListener("blur", () => showLoopFocus(pinnedLoopFocus));
+    control.addEventListener("click", () => {
+      pinnedLoopFocus = pinnedLoopFocus === focusName ? null : focusName;
+      syncPressedState();
+      showLoopFocus(pinnedLoopFocus);
+    });
+  });
+
+  loopVisual.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      pinnedLoopFocus = null;
+      syncPressedState();
+      showLoopFocus(null);
+    }
+  });
+
+  window.addEventListener("pointermove", (event) => {
+    if (!hero) return;
+
+    const heroBounds = hero.getBoundingClientRect();
+    const isStacked = window.innerWidth <= 960;
+    const isRightRegion = isStacked
+      ? loopVisual.contains(event.target)
+      : event.clientX >= heroBounds.left + heroBounds.width / 2;
+
+    setRightHover(isRightRegion);
+
+    if (!isRightRegion || reduceMotion) {
+      hero.style.setProperty("--loop-shift-x", "0px");
+      hero.style.setProperty("--loop-shift-y", "0px");
+      return;
+    }
+
+    const rightWidth = Math.max(heroBounds.width / 2, 1);
+    const x = (event.clientX - (heroBounds.left + rightWidth)) / rightWidth - 0.5;
+    const y = (event.clientY - heroBounds.top) / Math.max(heroBounds.height, 1) - 0.5;
+    hero.style.setProperty("--loop-shift-x", `${Math.max(-0.5, Math.min(0.5, x)) * 13}px`);
+    hero.style.setProperty("--loop-shift-y", `${Math.max(-0.5, Math.min(0.5, y)) * 9}px`);
+  });
+
+  window.addEventListener("pointerout", (event) => {
+    if (!event.relatedTarget) resetRightInteraction();
+  });
+}
+
 const revealItems = document.querySelectorAll(".reveal");
 
 if (reduceMotion || !("IntersectionObserver" in window)) {
