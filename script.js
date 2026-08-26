@@ -3,7 +3,7 @@ const members = [
     name: "Shaonan Wang",
     chineseName: "王少楠",
     role: "Assistant Professor",
-    image: "assets/members/shaonan-wang.jpg",
+    image: "assets/members/optimized/shaonan-wang.webp",
     profile: "https://wangshaonan.github.io/",
     research: "Forthcoming",
   },
@@ -12,7 +12,7 @@ const members = [
     chineseName: "郎楚涵",
     role: "PhD Student",
     start: "Starting September 2026",
-    image: "assets/members/chuhan-lang.jpg",
+    image: "assets/members/optimized/chuhan-lang.webp",
     imagePosition: "50% 64%",
     profile: "https://yesod-box.github.io/",
     research: "Forthcoming",
@@ -22,7 +22,7 @@ const members = [
     chineseName: "杨帆",
     role: "PhD Student",
     start: "Starting September 2026",
-    image: "assets/members/yang-fan.png",
+    image: "assets/members/optimized/yang-fan.webp",
     profile: "https://yvofun.github.io/",
     research: "Forthcoming",
   },
@@ -31,7 +31,7 @@ const members = [
     chineseName: "李娜",
     role: "PhD Student",
     start: "Starting September 2026",
-    image: "assets/members/na-li.jpg",
+    image: "assets/members/optimized/na-li.webp",
     imagePosition: "30% 56%",
     profile: "https://lnxxx0712.github.io/",
     research: "Forthcoming",
@@ -41,7 +41,7 @@ const members = [
     chineseName: "宋庆一",
     role: "PhD Student",
     start: "Starting September 2026",
-    image: "assets/members/qingyi-song.jpg",
+    image: "assets/members/optimized/qingyi-song.webp",
     profile: "https://sqy1225.github.io/",
     research: "Forthcoming",
   },
@@ -50,7 +50,7 @@ const members = [
     chineseName: "刘冠廷",
     role: "PhD Student",
     start: "Starting September 2026",
-    image: "assets/members/guanting-liu.png",
+    image: "assets/members/optimized/guanting-liu.webp",
     profile: "https://quentin2026.github.io/",
     supervision: {
       name: "Prof. Chaoming Wang",
@@ -62,7 +62,7 @@ const members = [
     name: "Jiwen Zhang",
     chineseName: "张霁雯",
     role: "Visiting Student",
-    image: "assets/members/jiwen-zhang.jpg?v=2",
+    image: "assets/members/optimized/jiwen-zhang.webp",
     imagePosition: "50% 53%",
     profile: "https://wendie0219.github.io/",
     research: "Forthcoming",
@@ -71,7 +71,7 @@ const members = [
     name: "Beiqing Huang",
     chineseName: "黄倍清",
     role: "Incoming Research Assistant",
-    image: "assets/members/beiqing-huang.jpg",
+    image: "assets/members/optimized/beiqing-huang.webp",
     profile: null,
     research: "Forthcoming",
   },
@@ -79,7 +79,7 @@ const members = [
     name: "Fei Chen",
     chineseName: "陈飞",
     role: "Incoming Research Assistant",
-    image: "assets/members/fei-chen.jpg",
+    image: "assets/members/optimized/fei-chen.webp",
     imagePosition: "58% 38%",
     profile: null,
     research: "Forthcoming",
@@ -96,7 +96,7 @@ if (currentGrid) {
           ${
             member.image
               ? `<div class="person-portrait">
-                  <img src="${member.image}" alt="Portrait of ${member.name} (${member.chineseName})" loading="lazy" decoding="async"${member.imagePosition ? ` style="object-position: ${member.imagePosition}"` : ""} />
+                  <img src="${member.image}" alt="Portrait of ${member.name} (${member.chineseName})" width="800" height="1000" loading="${index < 3 ? "eager" : "lazy"}" decoding="async" fetchpriority="${index < 3 ? "high" : "low"}"${member.imagePosition ? ` style="object-position: ${member.imagePosition}"` : ""} />
                 </div>`
               : `<div class="person-portrait person-portrait-empty" aria-label="Portrait forthcoming"></div>`
           }
@@ -213,11 +213,7 @@ if (loopVisual) {
     else delete hero.dataset.rightHover;
   };
 
-  const resetRightInteraction = () => {
-    setRightHover(false);
-    hero?.style.setProperty("--loop-shift-x", "0px");
-    hero?.style.setProperty("--loop-shift-y", "0px");
-  };
+  const resetRightInteraction = () => setRightHover(false);
 
   const showLoopFocus = (focusName) => {
     if (focusName) {
@@ -268,17 +264,6 @@ if (loopVisual) {
 
     setRightHover(isRightRegion);
 
-    if (!isRightRegion || reduceMotion) {
-      hero.style.setProperty("--loop-shift-x", "0px");
-      hero.style.setProperty("--loop-shift-y", "0px");
-      return;
-    }
-
-    const rightWidth = Math.max(heroBounds.width / 2, 1);
-    const x = (event.clientX - (heroBounds.left + rightWidth)) / rightWidth - 0.5;
-    const y = (event.clientY - heroBounds.top) / Math.max(heroBounds.height, 1) - 0.5;
-    hero.style.setProperty("--loop-shift-x", `${Math.max(-0.5, Math.min(0.5, x)) * 13}px`);
-    hero.style.setProperty("--loop-shift-y", `${Math.max(-0.5, Math.min(0.5, y)) * 9}px`);
   });
 
   window.addEventListener("pointerout", (event) => {

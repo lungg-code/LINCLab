@@ -123,8 +123,6 @@ img { display: block; max-width: 100%; }
 .menu-toggle { display: none; }
 
 .hero {
-  --loop-shift-x: 0px;
-  --loop-shift-y: 0px;
   position: relative;
   isolation: isolate;
   width: 100%;
@@ -253,11 +251,10 @@ img { display: block; max-width: 100%; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
-  opacity: 0.09;
-  filter: grayscale(.58) sepia(.08) saturate(.3) hue-rotate(218deg) contrast(.88);
-  transform: translate(var(--loop-shift-x), var(--loop-shift-y)) scale(1.02);
+  opacity: 0.3;
+  filter: grayscale(.02) sepia(0) saturate(.92) hue-rotate(2deg) contrast(.92);
+  transform: scale(1.02);
   mix-blend-mode: multiply;
-  transition: opacity 800ms ease, filter 900ms ease, transform 1100ms cubic-bezier(.2,.7,.2,1);
 }
 .hero-neural-bg::after {
   content: "";
@@ -287,11 +284,6 @@ img { display: block; max-width: 100%; }
 .hero-neural-wave::after { top: 50%; left: 50%; width: 100%; }
 .hero-neural-wave::before { animation-delay: .62s !important; }
 .hero-neural-wave::after { animation-delay: 1.24s !important; }
-.hero[data-right-hover="true"] .hero-neural-bg img {
-  opacity: 0.3;
-  filter: grayscale(.02) sepia(0) saturate(.92) hue-rotate(2deg) contrast(.92);
-  transform: translate(var(--loop-shift-x), var(--loop-shift-y)) scale(1.075);
-}
 .hero[data-right-hover="true"] .hero-neural-wave,
 .hero[data-right-hover="true"] .hero-neural-wave::before,
 .hero[data-right-hover="true"] .hero-neural-wave::after {
@@ -665,8 +657,7 @@ img { display: block; max-width: 100%; }
   .hero { grid-template-columns: 1fr; grid-template-rows: auto auto; gap: 3rem; min-height: auto; padding-top: 9rem; }
   .hero::before { display: none; }
   .hero-neural-bg { inset: 0 0 48% 0; }
-  .hero-neural-bg img { width: 100%; object-fit: contain; transform: translate(var(--loop-shift-x), var(--loop-shift-y)) scale(1.02); }
-  .hero[data-right-hover="true"] .hero-neural-bg img { transform: translate(var(--loop-shift-x), var(--loop-shift-y)) scale(1.075); }
+  .hero-neural-bg img { width: 100%; object-fit: contain; transform: scale(1.02); }
   .loop-visual { width: min(80vw, 540px); }
   .manifesto-grid { grid-template-columns: 1fr; }
   .section-heading { grid-template-columns: 1fr; align-items: start; }
