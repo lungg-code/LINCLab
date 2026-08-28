@@ -619,22 +619,60 @@ img { display: block; max-width: 100%; }
 .join { padding-block: clamp(7rem, 11vw, 11rem); }
 .join-panel {
   position: relative;
-  min-height: 590px;
+  min-height: 620px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  padding: 4rem var(--pad);
+  padding: clamp(3rem, 6vw, 6rem);
   border-radius: 2px;
   background: var(--terracotta);
   color: var(--cream);
-  text-align: center;
+  text-align: left;
 }
-.join-panel .eyebrow { color: #eee9fb; }
-.join h2 { position: relative; z-index: 1; font-size: clamp(4rem, 9vw, 8.5rem); }
-.join-panel > p:not(.eyebrow) { position: relative; z-index: 1; max-width: 610px; margin: 2.2rem 0 1.7rem; color: #eee9fb; font-size: 1.05rem; }
-.availability { position: relative; z-index: 1; padding: 0.65rem 1rem; border: 1px solid rgba(255,255,255,0.45); border-radius: 100px; font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+.join-content { position: relative; z-index: 1; width: min(100%, 1060px); margin-inline: auto; }
+.join h2 { font-size: clamp(3.8rem, 7.4vw, 7.2rem); line-height: 0.9; letter-spacing: -0.065em; }
+.join h2 em { color: #ded3ff; font-family: var(--font-serif); font-weight: 600; }
+.join-intro { max-width: 760px; margin: 2.4rem 0 0; color: #f0ebfb; font-size: clamp(1rem, 1.35vw, 1.2rem); line-height: 1.7; }
+.join-application {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+  margin-top: clamp(2.8rem, 5vw, 4.5rem);
+  padding-top: 1.6rem;
+  border-top: 1px solid rgba(255,255,255,0.28);
+}
+.join-application > div {
+  max-width: 680px;
+  padding: 1.2rem 1.35rem;
+  border-left: 3px solid #ded3ff;
+  border-radius: 0 10px 10px 0;
+  background: rgba(255,255,255,0.1);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+}
+.join-application > div > span { display: block; margin-bottom: 0.65rem; color: #fffaf2; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+.join-application p { margin: 0; color: #f0ebfb; font-size: 0.92rem; line-height: 1.65; }
+.copy-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-width: 290px;
+  padding: 0.8rem 0.9rem 0.8rem 1.15rem;
+  border: 1px solid rgba(255,255,255,0.5);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--cream);
+  font-size: 0.82rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 220ms ease, color 220ms ease, transform 220ms ease;
+}
+.copy-email-status { min-width: 54px; padding: 0.35rem 0.55rem; border-radius: 100px; background: rgba(255,255,255,0.14); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-align: center; text-transform: uppercase; }
+.copy-email:hover, .copy-email:focus-visible, .copy-email.is-copied { background: var(--cream); color: var(--violet-deep); outline: none; transform: translateY(-2px); }
+.copy-email:hover .copy-email-status, .copy-email:focus-visible .copy-email-status, .copy-email.is-copied .copy-email-status { background: rgba(111,90,176,0.12); }
 .join-orbit { position: absolute; width: min(74vw, 720px); aspect-ratio: 1; border: 1px solid rgba(255,255,255,0.18); border-radius: 50%; }
 .join-orbit::before, .join-orbit::after { content: ""; position: absolute; border: 1px solid rgba(255,255,255,0.12); border-radius: 50%; }
 .join-orbit::before { inset: 13%; }
@@ -711,8 +749,11 @@ img { display: block; max-width: 100%; }
   .research-symbol { grid-column: 2; width: 110px; }
   .research-item > div:last-child { grid-column: 2; }
   .member-card { grid-column: span 12; }
-  .join-panel { min-height: 520px; margin-inline: calc(var(--pad) * -0.35); }
-  .join h2 { font-size: clamp(3.5rem, 17vw, 6rem); }
+  .join-panel { min-height: 620px; margin-inline: calc(var(--pad) * -0.35); }
+  .join h2 { font-size: clamp(3.35rem, 15vw, 5.5rem); }
+  .join-application { grid-template-columns: 1fr; align-items: start; }
+  .copy-email { min-width: 0; width: 100%; white-space: normal; }
+  .copy-email-address { overflow-wrap: anywhere; }
   .footer-grid { grid-template-columns: 1fr; align-items: start; }
   .footer-meta { grid-column: 1; align-items: flex-start; }
 }

@@ -81,7 +81,7 @@ const members = [
     role: "Incoming Research Assistant",
     image: "assets/members/optimized/fei-chen.webp",
     imagePosition: "58% 38%",
-    profile: null,
+    profile: "https://chenfei0611.github.io/",
     research: "Forthcoming",
   },
 ];
@@ -131,6 +131,38 @@ if (currentGrid) {
     )
     .join("");
 }
+
+const copyEmailButton = document.querySelector("[data-copy-email]");
+let copyEmailResetTimer;
+
+copyEmailButton?.addEventListener("click", async () => {
+  const email = copyEmailButton.dataset.copyEmail;
+  const status = copyEmailButton.querySelector("[data-copy-label]");
+  let copied = false;
+
+  try {
+    await navigator.clipboard.writeText(email);
+    copied = true;
+  } catch {
+    const helper = document.createElement("textarea");
+    helper.value = email;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.opacity = "0";
+    document.body.append(helper);
+    helper.select();
+    copied = document.execCommand("copy");
+    helper.remove();
+  }
+
+  if (status) status.textContent = copied ? "Copied" : "Try again";
+  copyEmailButton.classList.toggle("is-copied", copied);
+  window.clearTimeout(copyEmailResetTimer);
+  copyEmailResetTimer = window.setTimeout(() => {
+    if (status) status.textContent = "Copy";
+    copyEmailButton.classList.remove("is-copied");
+  }, 1800);
+});
 
 const header = document.querySelector("[data-header]");
 const menuButton = document.querySelector(".menu-toggle");
