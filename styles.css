@@ -241,7 +241,7 @@ img { display: block; max-width: 100%; }
 }
 .hero-neural-bg {
   position: absolute;
-  inset: 0 50% 0 0;
+  inset: 82px 0 0;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -251,19 +251,15 @@ img { display: block; max-width: 100%; }
   height: 100%;
   object-fit: cover;
   object-position: 50% 50%;
-  opacity: 0.3;
-  filter: grayscale(.02) sepia(0) saturate(.92) hue-rotate(2deg) contrast(.92);
-  transform: scale(1.02);
-  mix-blend-mode: multiply;
+  opacity: 0.5;
+  filter: saturate(.86) contrast(.94);
 }
 .hero-neural-bg::after {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 2;
-  background:
-    linear-gradient(90deg, rgba(244,239,231,.1), rgba(244,239,231,.025) 58%, rgba(244,239,231,.18) 84%, var(--paper) 100%),
-    rgba(244,239,231,.04);
+  background: linear-gradient(90deg, rgba(244,239,231,.34) 0%, rgba(244,239,231,.2) 44%, rgba(244,239,231,.08) 68%, rgba(244,239,231,.16) 100%);
 }
 .hero-neural-wave,
 .hero-neural-wave::before,
@@ -694,8 +690,8 @@ img { display: block; max-width: 100%; }
 @media (max-width: 960px) {
   .hero { grid-template-columns: 1fr; grid-template-rows: auto auto; gap: 3rem; min-height: auto; padding-top: 9rem; }
   .hero::before { display: none; }
-  .hero-neural-bg { inset: 0 0 48% 0; }
-  .hero-neural-bg img { width: 100%; object-fit: contain; transform: scale(1.02); }
+  .hero-neural-bg { inset: 82px 0 0; }
+  .hero-neural-bg img { width: 100%; object-fit: cover; object-position: 50% 50%; }
   .loop-visual { width: min(80vw, 540px); }
   .manifesto-grid { grid-template-columns: 1fr; }
   .section-heading { grid-template-columns: 1fr; align-items: start; }
