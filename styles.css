@@ -903,7 +903,7 @@ img { display: block; max-width: 100%; }
 .person-supervision a { color: var(--terracotta-dark); text-decoration: underline; text-decoration-color: rgba(112, 82, 181, 0.28); text-underline-offset: 0.2em; }
 .person-research {
   width: 100%;
-  min-height: 112px;
+  min-height: 148px;
   margin: 2rem 0;
   padding: 1.5rem 0;
   border-top: 1px solid var(--line);

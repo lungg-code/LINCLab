@@ -5,7 +5,7 @@ const members = [
     role: "Assistant Professor",
     image: "assets/members/optimized/shaonan-wang.webp",
     profile: "https://wangshaonan.github.io/",
-    research: "Forthcoming",
+    research: "Computational neurolinguistics; computational models for language understanding; brain–computer interfaces; AI applications in education and healthcare",
   },
   {
     name: "Chuhan Lang",
@@ -15,7 +15,7 @@ const members = [
     image: "assets/members/optimized/chuhan-lang.webp",
     imagePosition: "50% 64%",
     profile: "https://yesod-box.github.io/",
-    research: "Forthcoming",
+    research: "Computational language acquisition; LLM interpretability; multimodal AI systems",
   },
   {
     name: "Fan Yang",
@@ -24,7 +24,7 @@ const members = [
     start: "Starting September 2026",
     image: "assets/members/optimized/yang-fan.webp",
     profile: "https://yvofun.github.io/",
-    research: "Forthcoming",
+    research: "Computational neurolinguistics; brain dynamics",
   },
   {
     name: "Na Li",
@@ -34,7 +34,7 @@ const members = [
     image: "assets/members/optimized/na-li.webp",
     imagePosition: "30% 56%",
     profile: "https://lnxxx0712.github.io/",
-    research: "Forthcoming",
+    research: "Neural mechanisms of language understanding; computational neurolinguistics; neural encoding and decoding; language-guided action",
   },
   {
     name: "Qingyi Song",
@@ -43,7 +43,7 @@ const members = [
     start: "Starting September 2026",
     image: "assets/members/optimized/qingyi-song.webp",
     profile: "https://sqy1225.github.io/",
-    research: "Forthcoming",
+    research: "Computational neurolinguistics; brain–model alignment; cognitive neuroscience; language cognition modeling",
   },
   {
     name: "Guangting Liu",
@@ -56,7 +56,7 @@ const members = [
       name: "Prof. Chaoming Wang",
       url: "https://wangchaoming.com/en/",
     },
-    research: "Forthcoming",
+    research: "Computational neuroscience; brain simulation; computational neurolinguistics; brain–computer interfaces",
   },
   {
     name: "Jiwen Zhang",
@@ -65,7 +65,7 @@ const members = [
     image: "assets/members/optimized/jiwen-zhang.webp",
     imagePosition: "50% 53%",
     profile: "https://wendie0219.github.io/",
-    research: "Forthcoming",
+    research: "Neural encoding and decoding of language; lexical-semantic representation; AI applications in education",
   },
   {
     name: "Beiqing Huang",
@@ -73,7 +73,7 @@ const members = [
     role: "Incoming Research Assistant",
     image: "assets/members/optimized/beiqing-huang.webp",
     profile: null,
-    research: "Forthcoming",
+    research: "Neural mechanisms of natural language; predictive processing; semantic composition; statistical learning in language comprehension",
   },
   {
     name: "Fei Chen",
@@ -82,7 +82,7 @@ const members = [
     image: "assets/members/optimized/fei-chen.webp",
     imagePosition: "58% 38%",
     profile: "https://chenfei0611.github.io/",
-    research: "Forthcoming",
+    research: "Corpus linguistics; computational linguistics; cognitive effects of LLM usage; AI in education",
   },
 ];
 
