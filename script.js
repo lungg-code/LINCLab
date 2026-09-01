@@ -72,7 +72,7 @@ const members = [
     chineseName: "黄倍清",
     role: "Incoming Research Assistant",
     image: "assets/members/optimized/beiqing-huang.webp",
-    profile: null,
+    profile: "https://huangbeiqing.github.io/",
     research: "Neural mechanisms of natural language; predictive processing; semantic composition; statistical learning in language comprehension",
   },
   {
