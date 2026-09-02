@@ -97,7 +97,7 @@ const collaborators = [
   },
   {
     name: "Liina Pylkkänen",
-    role: "Professor of Linguistics and Psychology",
+    role: "Professor",
     affiliation: "New York University",
     image: "assets/members/collaborators/liina-pylkkanen.jpg",
     imagePosition: "50% 38%",
