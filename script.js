@@ -86,6 +86,64 @@ const members = [
   },
 ];
 
+const collaborators = [
+  {
+    name: "Nan Lin",
+    role: "Professor",
+    affiliation: "Institute of Psychology, Chinese Academy of Sciences",
+    image: "assets/members/collaborators/nan-lin.jpg",
+    imagePosition: "35% 50%",
+    profile: "http://eyemind.psych.ac.cn/Faculty/linn/enlinn2024.html",
+  },
+  {
+    name: "Liina Pylkkänen",
+    role: "Professor of Linguistics and Psychology",
+    affiliation: "New York University",
+    image: "assets/members/collaborators/liina-pylkkanen.jpg",
+    imagePosition: "50% 38%",
+    profile: "https://wp.nyu.edu/neurolinglab/people/liina-pylkkanen/",
+  },
+  {
+    name: "Jixing Li",
+    role: "Assistant Professor",
+    affiliation: "Department of Linguistics and Translation, City University of Hong Kong",
+    image: "assets/members/collaborators/jixing-li.jpg",
+    imagePosition: "50% 42%",
+    profile: "https://lt.cityu.edu.hk/en/people/academic-staff/li-jixing",
+  },
+  {
+    name: "Nai Ding",
+    role: "Professor",
+    affiliation: "Zhejiang University",
+    image: "assets/members/collaborators/nai-ding.jpg",
+    profile: "https://person.zju.edu.cn/person/en/dingnai",
+  },
+  {
+    name: "Chaoming Wang",
+    role: "Principal Investigator",
+    affiliation: "Guangdong Institute of Intelligence Science and Technology",
+    image: "assets/members/collaborators/chaoming-wang.jpg",
+    imagePosition: "50% 38%",
+    profile: "https://wangchaoming.com/en/",
+  },
+  {
+    name: "Xin Sun",
+    role: "Assistant Professor",
+    affiliation: "The Hong Kong Polytechnic University (PolyU)",
+    image: "assets/members/collaborators/xin-sun.jpg",
+    imagePosition: "50% 36%",
+    profile: "https://www.polyu.edu.hk/lst/people/academic-staff/sun-xin/",
+  },
+  {
+    name: "Yaran Chen",
+    role: "Associate Professor",
+    affiliation: "Xi’an Jiaotong-Liverpool University",
+    image: "assets/members/collaborators/yaran-chen.jpg",
+    imagePosition: "50% 32%",
+    profile: "https://scholar.xjtlu.edu.cn/en/persons/YaranChen/",
+  },
+];
+
 const currentGrid = document.querySelector("#current-grid");
 
 if (currentGrid) {
@@ -125,6 +183,33 @@ if (currentGrid) {
                 ? `<a class="person-profile" href="${member.profile}" target="_blank" rel="noopener noreferrer">Personal homepage <span aria-hidden="true">↗</span></a>`
                 : `<span class="person-profile person-profile-muted">Homepage forthcoming</span>`
             }
+          </div>
+        </article>
+      `,
+    )
+    .join("");
+}
+
+const collaboratorGrid = document.querySelector("#collaborator-grid");
+
+if (collaboratorGrid) {
+  collaboratorGrid.innerHTML = collaborators
+    .map(
+      (collaborator, index) => `
+        <article class="person-card collaborator-card reveal" style="transition-delay: ${Math.min(index * 50, 150)}ms">
+          <div class="person-portrait">
+            <img src="${collaborator.image}" alt="Portrait of ${collaborator.name}" width="800" height="1000" loading="lazy" decoding="async" fetchpriority="low"${collaborator.imagePosition ? ` style="object-position: ${collaborator.imagePosition}"` : ""} />
+          </div>
+          <div class="person-body">
+            <div class="person-name person-name-single">
+              <h3><a href="${collaborator.profile}" target="_blank" rel="noopener noreferrer">${collaborator.name}</a></h3>
+            </div>
+            <p class="person-role">${collaborator.role}</p>
+            <div class="person-affiliation">
+              <span>Affiliation</span>
+              <p>${collaborator.affiliation}</p>
+            </div>
+            <a class="person-profile" href="${collaborator.profile}" target="_blank" rel="noopener noreferrer">Personal homepage <span aria-hidden="true">↗</span></a>
           </div>
         </article>
       `,
