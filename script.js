@@ -142,6 +142,30 @@ const collaborators = [
     imagePosition: "50% 32%",
     profile: "https://scholar.xjtlu.edu.cn/en/persons/YaranChen/",
   },
+  {
+    name: "Yu-yin Hsu",
+    role: "Associate Professor",
+    affiliation: "The Hong Kong Polytechnic University (PolyU)",
+    image: "assets/members/collaborators/yu-yin-hsu.jpg",
+    imagePosition: "50% 34%",
+    profile: "https://www.polyu.edu.hk/lst/people/academic-staff/hsu-yu-yin/",
+  },
+  {
+    name: "Xi Yu",
+    role: "Ph.D.",
+    affiliation: "Beijing Normal University",
+    image: "assets/members/collaborators/xi-yu.jpg",
+    imagePosition: "50% 24%",
+    profile: "https://brain.bnu.edu.cn/English/Faculty/CurrentFaculty/Yzz/83e53e8f21614ea19de70877b01142a3.htm",
+  },
+  {
+    name: "Zheng Lian",
+    role: "Associate Professor",
+    affiliation: "Tongji University",
+    image: "assets/members/collaborators/zheng-lian.jpg",
+    imagePosition: "50% 30%",
+    profile: "https://zeroqiaoba.github.io/Homepage/",
+  },
 ];
 
 const currentGrid = document.querySelector("#current-grid");

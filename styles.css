@@ -816,6 +816,31 @@ img { display: block; max-width: 100%; }
 }
 
 .news { padding-block: clamp(7rem, 11vw, 11rem); }
+.news-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.news-card {
+  display: flex;
+  min-width: 0;
+  min-height: 480px;
+  flex-direction: column;
+  padding: clamp(1.5rem, 2.5vw, 2.5rem);
+  border-right: 1px solid var(--line);
+}
+.news-card:first-child { padding-left: 0; }
+.news-card:last-child { padding-right: 0; border-right: 0; }
+.news-card-top { display: flex; justify-content: space-between; gap: 1rem; color: var(--terracotta-dark); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.news-card-body { display: flex; flex: 1; flex-direction: column; padding-top: clamp(2.5rem, 4vw, 4rem); }
+.news-journal { margin: 0 0 1.1rem; color: var(--terracotta-dark); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; line-height: 1.45; text-transform: uppercase; }
+.news-card h3 { margin: 0; font: 500 clamp(1.55rem, 2.35vw, 2.2rem)/1.08 var(--font-display); letter-spacing: -0.04em; }
+.news-headline { margin: 1.25rem 0 0; color: var(--ink); font-size: 0.98rem; line-height: 1.55; }
+.news-finding { margin: 1.5rem 0 0; color: var(--muted); font-size: 0.86rem; line-height: 1.68; }
+.news-finding strong { display: block; margin-bottom: 0.35rem; color: var(--terracotta-dark); font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; }
+.news-link { align-self: flex-start; margin-top: auto; padding-top: 2rem; color: var(--terracotta-dark); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.04em; }
+.news-link:hover { color: var(--violet); }
 .news-empty,
 .page-empty {
   display: flex;
@@ -867,6 +892,65 @@ img { display: block; max-width: 100%; }
 .page-hero h1 { font-size: clamp(3.8rem, 7.5vw, 7.4rem); }
 .page-hero > p:last-child { max-width: 680px; margin: 2rem auto 0; color: var(--muted); font-size: clamp(1rem, 1.45vw, 1.2rem); }
 .placeholder-section { min-height: 390px; padding-bottom: clamp(7rem, 11vw, 11rem); }
+
+.publications-feed,
+.teaching-feed { padding-bottom: clamp(7rem, 11vw, 11rem); }
+.publication-year,
+.teaching-term {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.25fr) 1fr auto;
+  align-items: end;
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+}
+.publication-year p,
+.teaching-term p,
+.teaching-term span { margin: 0; color: var(--terracotta-dark); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.13em; text-transform: uppercase; }
+.publication-year h2,
+.teaching-term h2 { margin: 0; font: 400 clamp(3.5rem, 6vw, 6rem)/0.9 var(--font-display); letter-spacing: -0.06em; }
+.publication-list { margin: 0; padding: 0; list-style: none; }
+.publication-entry {
+  display: grid;
+  grid-template-columns: 2.2rem minmax(0, 1fr);
+  gap: clamp(1.4rem, 3vw, 3rem);
+  align-items: start;
+  padding: clamp(2.15rem, 3.2vw, 3.25rem) clamp(0.2rem, 1vw, 1rem);
+  border-bottom: 1px solid var(--line);
+  transition: background-color 220ms ease;
+}
+.publication-entry:hover { background: rgba(111, 90, 176, 0.035); }
+.publication-number {
+  display: grid;
+  width: 2.1rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid rgba(89, 71, 141, 0.3);
+  border-radius: 50%;
+  color: var(--terracotta-dark);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.course-number { color: var(--terracotta-dark); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; }
+.publication-citation {
+  max-width: 1040px;
+  margin: 0;
+  color: var(--ink);
+  font: 400 clamp(1rem, 1.35vw, 1.24rem)/1.65 var(--font-sans);
+  letter-spacing: -0.008em;
+  text-wrap: pretty;
+}
+
+.teaching-term { grid-template-columns: minmax(150px, 0.25fr) 1fr auto; }
+.teaching-term > span { padding-bottom: 0.45rem; }
+.course-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.course-card { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: clamp(1.25rem, 2.5vw, 2.5rem); min-height: 320px; padding: clamp(2.5rem, 4vw, 4rem); border-bottom: 1px solid var(--line); }
+.course-card:first-child { padding-left: 0; border-right: 1px solid var(--line); }
+.course-card:last-child { padding-right: 0; }
+.course-code { margin: 0 0 1.15rem; color: var(--terracotta-dark); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+.course-card h3 { max-width: 520px; margin: 0; font: 500 clamp(1.75rem, 3vw, 2.8rem)/1.08 var(--font-display); letter-spacing: -0.045em; }
+.course-semester { margin: 1.5rem 0 0; color: var(--muted); font-size: 0.88rem; }
 
 .people-section { padding-bottom: clamp(7rem, 10vw, 10rem); }
 .people-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(1.25rem, 2.4vw, 2.5rem); }
@@ -1349,6 +1433,11 @@ img { display: block; max-width: 100%; }
 
 @media (max-width: 900px) {
   .people-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .news-list { grid-template-columns: 1fr; }
+  .news-card { min-height: 0; padding: 2.5rem 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .news-card:last-child { border-bottom: 0; }
+  .news-card-body { padding-top: 2.25rem; }
+  .news-link { margin-top: 1.75rem; padding-top: 0; }
 }
 
 @media (max-width: 620px) {
@@ -1363,6 +1452,14 @@ img { display: block; max-width: 100%; }
   .page-hero > p:last-child { margin-left: 0; }
   .people-card-grid { grid-template-columns: 1fr; }
   .person-card { min-height: 535px; }
+  .publication-year,
+  .teaching-term { grid-template-columns: 1fr; gap: 0.75rem; align-items: start; }
+  .publication-year h2,
+  .teaching-term h2 { grid-row: 1; }
+  .publication-entry { grid-template-columns: 2rem minmax(0, 1fr); gap: 1rem; padding-inline: 0; }
+  .publication-number { width: 1.9rem; }
+  .course-list { grid-template-columns: 1fr; }
+  .course-card { min-height: 0; padding: 2.5rem 0; border-right: 0 !important; }
   .activities-feed { padding-inline: 0; }
   .activity-entry { padding-inline: var(--pad); }
   .activity-meta { align-items: center; }
